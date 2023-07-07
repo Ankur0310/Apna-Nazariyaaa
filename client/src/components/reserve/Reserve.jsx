@@ -12,13 +12,11 @@ const Reserve = ({setOpen,hotelId}) => {
     const [selectedRooms, setSelectedRooms] = useState([])
     const {data,loading,error}=useFetch(`/hotels/rooms/${hotelId}`)
     const {date}=useContext(SearchContext);
-
     const getDatesInRange = (startDate, endDate) => {
         const start = new Date(startDate);
         const end = new Date(endDate);
         const date = new Date(start.getTime());
         const dates= [];
-        // console.log(start, end);
         while (date <= end) {
           dates.push(new Date(date).getTime());
           date.setDate(date.getDate() + 1);
@@ -31,12 +29,10 @@ const Reserve = ({setOpen,hotelId}) => {
       
       const IsAvailabe =(roomNumber)=>{
         const isFound=roomNumber.unavailableDates.some((date)=>Alldates.includes(new Date(date).getTime()));
-        console.log(isFound)
         return !isFound;
       };
 
    useEffect(()=>{
-    console.log(selectedRooms)
    },[selectedRooms]);
 
     const handleSelect=(e)=>{  
@@ -44,8 +40,6 @@ const Reserve = ({setOpen,hotelId}) => {
       const value=e.target.value;//room id mil rhi
      
       setSelectedRooms(checked?[...selectedRooms,value]:selectedRooms.filter((item)=>item!==value))
-      console.log("handleselect called");
-      //console.log(selectedRooms)
     }
 
     
@@ -55,14 +49,9 @@ const Reserve = ({setOpen,hotelId}) => {
         try {
              let promise =await Promise.all(
             selectedRooms.map((roomId) => {
-              // console.log(roomId);
-              // console.log(Alldates);
               const res = axiosInstance.put(`/rooms/availability/${roomId}`,{
                 dates: Alldates,
               });
-              console.log("frontend se data ja rha")
-              // console.log(res);
-              // console.log(res.data);//undefined
               return res.data;
             })
           );

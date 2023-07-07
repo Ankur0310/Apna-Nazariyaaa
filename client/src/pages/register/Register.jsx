@@ -25,7 +25,6 @@ export const Register = () => {
 
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
-    console.log(credentials);
   };
 
   const handleClick = async (e) => {
@@ -52,7 +51,6 @@ export const Register = () => {
       alert("User created successfully")
       navigate('/');
     } catch (err) {
-      console.log('error aa raha');
       dispatch({ type: 'REGISTER_FAILURE', payload: err.response?.data });
     }
   };

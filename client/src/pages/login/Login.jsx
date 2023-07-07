@@ -15,7 +15,6 @@ export const Login = () => {
 
     const handleChange=(e)=>{
         setCredentials({...credentials, [e.target.name]:e.target.value});
-        console.log(credentials);
     };
 
     const handleClick= async (e)=>{
@@ -24,18 +23,14 @@ export const Login = () => {
         dispatch({type:"LOGIN_START"})
         try {
            const  res= await axiosInstance.post("auth/login",credentials);
-           console.log(res);
-           console.log('in try block after api call');
            dispatch({type:"LOGIN_SUCCESS",payload: res?.data}) 
            alert("logged In successfully")
            navigate("/")
         } catch (err) {
-            console.log('error aa raha');
             dispatch({type:"LOGIN_FAILURE",payload:err.response?.data})
         }
     };
-
-    //console.log(user)
+    
   return (
     <div className="login">
         <div className="lContainer">

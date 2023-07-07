@@ -20,6 +20,7 @@ const Roomschema =new mongoose.Schema({
        default:false,
     },
     roomNumbers:[{number:Number,unavailableDates:{type:[Date]}}],
+    
     maxPeople:{
         type:Number,
         required:true,

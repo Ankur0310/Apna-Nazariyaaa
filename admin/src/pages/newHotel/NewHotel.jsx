@@ -17,15 +17,13 @@ const NewHotel = () => {
   const handleChange= (e)=>{
      setInfo(prev=>({...prev,[e.target.id]:e.target.value}))
   }
-  console.log(info);
+
   const handleSelect=(e)=>{
-    console.log(e.target.selectedOptions)
     const value = Array.from(
       e.target.selectedOptions,
       (option) => option.value
     );
     setRooms(value);
-    console.log(value)
   }
 
 
@@ -34,8 +32,6 @@ const NewHotel = () => {
     try {
       const list =await Promise.all(Object.values(files).map(async(file)=>{
         const data=new FormData()
-        console.log("hi formdata here")
-        console.log(data)
         data.append("file",file)
         data.append("upload_preset","upload")
         const uploadRes = await axios.post(
@@ -43,8 +39,6 @@ const NewHotel = () => {
           data
         );
         const {url}=uploadRes.data;
-        console.log("hi,i am images url")
-        console.log(url);
         return url;
        }));
       
@@ -53,17 +47,12 @@ const NewHotel = () => {
         rooms,
         photos:list,
       };
-      console.log("hi,i am new hotel")
-      console.log(newHotel)
       await axios.post("/hotels",newHotel)
       alert("Hotel Added Successfully");
     } catch (err) {
-      console.log("ERROR")
-      console.log(err)
     }
   }
 
-  console.log(files)
   return (
     <div className="new">
       <Sidebar />

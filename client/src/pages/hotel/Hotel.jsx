@@ -27,7 +27,7 @@ export const Hotel = () => {
 
   const {user} =useContext(AuthContext);
 
-  console.log(date);
+
 
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
@@ -36,17 +36,19 @@ export const Hotel = () => {
     return diffDays;
   }
   const days=dayDifference(date[0]?.endDate,date[0]?.startDate);
-  console.log(days);
+
  
   const handleOpen=(i) =>{
     setSlideNumber(i);
     setOpen(true);
   };
 
+  const photoCount=data.photos?.length-1;
+
   const handleMove=(direction)=>{
     let newSliderNumber;
     if(direction==="l"){ newSliderNumber=slideNumber===0? 5:slideNumber-1;}
-    else{newSliderNumber=slideNumber===5? 0:slideNumber+1;}
+    else{newSliderNumber=slideNumber===photoCount? 0:slideNumber+1;}
 
     setSlideNumber(newSliderNumber);
   }
@@ -54,7 +56,6 @@ export const Hotel = () => {
   const handleClick =(e)=>{
 
     if (days === 0) {
-      console.log("0 days");
       alert("Please Choose Check-in and Check-Out dates");
       alert("Please proceed to HomePage for selecting dates :)")
       navigate('/');

@@ -12,8 +12,6 @@ import { AuthContext } from "../../context/AuthContext";
         e.preventDefault();
          try{
           dispatch({ type: 'LOG_OUT' });
-          // window.location.reload();
-          console.log("dispatched")
          }catch(err){
           console.log(err);
          }

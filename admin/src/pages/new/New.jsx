@@ -36,7 +36,7 @@ const handleClick= async (e)=>{
     console.log(err)
   }
 }
-  console.log(info)
+  
   return (
     <div className="new">
       <Sidebar />
@@ -86,7 +86,3 @@ const handleClick= async (e)=>{
 };
 
 export default New;
-
- //   const res = await axiosInstance.post('auth/register', credentials);
-    //   console.log(res);
-    //   console.log('in try block after api call');

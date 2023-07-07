@@ -33,7 +33,6 @@ const AuthReducer = (state, action) => {
            error:action.payload,
        };
        case "LOG_OUT":
-        console.log("user removed");
         return{
            user:null,
            loading:false,
