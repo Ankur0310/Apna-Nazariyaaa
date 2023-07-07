@@ -3,6 +3,7 @@ import "./login.css";
 import { AuthContext } from "../../context/AuthContext";
 import axiosInstance from "../../hooks/api";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
     const [credentials, setCredentials] = useState({
@@ -34,13 +35,22 @@ export const Login = () => {
   return (
     <div className="login">
         <div className="lContainer">
+            <div className="ll">
             <span>Login</span>
            
-            <input type="text" placeholder="Username" id="username"  name="username" onChange={(e)=>handleChange(e)} className="lInput" />
-            <input type="password" placeholder="Password" id="password" name="password" onChange={(e)=>handleChange(e)} className="lInput" />
-            <button disabled={loading} onClick={(e)=>handleClick(e)} className="lButton">Login</button> 
-            {error && <span>{error.message}</span>}
-            
+                <input type="text" placeholder="Username" id="username"  name="username" onChange={(e)=>handleChange(e)} className="lInput" />
+                <input type="password" placeholder="Password" id="password" name="password" onChange={(e)=>handleChange(e)} className="lInput" />
+                <button disabled={loading} onClick={(e)=>handleClick(e)} className="lButton">Login</button> 
+                {error && <span>{error.message}</span>}
+                <br />
+            </div>
+            <Link to="/" style={{textDecoration:"none"}}>
+                <span className="logo2">Go to HomePage</span>
+            </Link>
+            <br />
+            <Link to="/register" style={{textDecoration:"none"}}>
+                <span className="logo2">Go to Register Page</span>
+            </Link>
         </div>
     </div>
   )

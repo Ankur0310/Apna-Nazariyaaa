@@ -46,21 +46,24 @@ const Reserve = ({setOpen,hotelId}) => {
     const navigate = useNavigate();
 
     const handleClick = async () => {
+      if (selectedRooms.length > 0) {
         try {
-             let promise =await Promise.all(
+          let promise = await Promise.all(
             selectedRooms.map((roomId) => {
-              const res = axiosInstance.put(`/rooms/availability/${roomId}`,{
+              const res = axiosInstance.put(`/rooms/availability/${roomId}`, {
                 dates: Alldates,
               });
               return res.data;
             })
           );
-       
           setOpen(false);
-          alert("Reserved Successfully")
+          alert("Reserved Successfully");
           navigate("/");
         } catch (err) {}
-      };
+      } else {
+        alert("atleast choose 1 room")
+      }
+  };
       
   return (
     <div className='reserve'>
