@@ -43,6 +43,11 @@ export const Login = () => {
                 <button disabled={loading} onClick={(e)=>handleClick(e)} className="lButton">Login</button> 
                 {error && <span>{error.message}</span>}
                 <br />
+                {loading && (
+              <div className="spinner">
+                <div className="loader"></div>
+              </div>
+            )}
             </div>
             <Link to="/" style={{textDecoration:"none"}}>
                 <span className="logo2">Go to HomePage</span>

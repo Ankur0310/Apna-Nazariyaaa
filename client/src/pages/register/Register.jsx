@@ -149,6 +149,13 @@ export const Register = () => {
                 <label>Password: <br /> <input type="password" name="password" onChange={handleChange} /> </label>
             <button onClick={(e)=>handleClick(e)}>Send</button>
               </form>
+
+              {loading && (
+              <div className="spinner">
+                <div className="loader"></div>
+              </div>
+            )}
+
               <br />
               <Link to="/login" style={{color:"red",textDecoration:"none"}}>
                 <span className="logo1">If already user then click here to login</span>
