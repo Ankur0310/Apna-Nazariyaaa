@@ -55,7 +55,7 @@ export const Register = () => {
       return;
     }
     if (!credentials.password) {
-      alert("Please fill valid email address");
+      alert("Please fill a strong password");
       return;
     }
 
